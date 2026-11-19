@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html
         lang="ko"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>카드 딜러</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-<h3>카드</h3>
-<div style="display: flex;">
-    <div th:each="card : ${cards}">
-        <img
-                th:src="@{/images/{imageName}(imageName=${card})}"
-                alt="카드 이미지"
-                width="200px">
+<body class="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 text-white flex flex-col items-center justify-center px-4 py-8">
+<div class="w-full max-w-5xl text-center">
+    <header class="mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2 drop-shadow">
+            🃏 카드 딜러
+        </h1>
+        <p class="text-sm sm:text-base text-emerald-200">
+            무작위로 뽑힌 5장의 카드입니다
+        </p>
+    </header>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-5 justify-items-center mb-10">
+        <div
+                th:each="card : ${cards}"
+                class="w-full max-w-[190px] bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-xl transition duration-300 hover:-translate-y-2.5 hover:scale-105 hover:shadow-2xl">
+            <img
+                    th:src="@{/images/{imageName}(imageName=${card})}"
+                    alt="카드 이미지"
+                    class="w-full h-auto block">
+        </div>
     </div>
+
+    <a
+            href=""
+            onclick="location.reload(); return false;"
+            class="inline-block px-8 py-3.5 text-base font-semibold text-emerald-950 bg-amber-400 rounded-full shadow-lg hover:bg-amber-300 hover:-translate-y-0.5 active:translate-y-0 transition">
+        다시 뽑기
+    </a>
 </div>
 </body>
 </html>
